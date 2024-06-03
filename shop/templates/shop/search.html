@@ -1,0 +1,34 @@
+{% extends 'shop/basic.html' %}
+{% block title %} Checkout - My Awesome Cart{% endblock %}
+{% block css %}
+.col-md-3 img{
+    width: 170px;
+    height: 200px;
+    }
+{% endblock %}
+{% block body %}
+<div class="container no-padding">
+    <div class="row my-2">
+        {% for i in allProds %}
+        <div class="col-xs-6 col-sm-6 col-md-3">
+            <div class="card align-items-center" style="width: 18rem;">
+                <img src='/media/{{i.image}}' class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h4 class="card-title" id="pricepr{{i.id}}" >₹{{i.price}}</h4>
+                    <h5 class="card-title" id="namepr{{i.id}}">{{i.product_name}}</h5>
+                    <p class="card-text">{{i.desc|slice:"0:53"}}...</p>
+                    <span id="divpr{{i.id}}" class="divpr">
+                        <button id="pr{{i.id}}" class="btn btn-primary cart">Add To Cart</button>
+                    </span>
+                    <a href="/shop/products/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-primary cart">QuickView</button></a>
+                </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:4 and not forloop.last %}
+    </div>
+    <div class="row my-2">
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

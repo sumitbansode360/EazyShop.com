@@ -1,0 +1,20 @@
+{% extends 'shop/basic.html' %}
+{% block title%} Checkout - My Awesome Cart{% endblock %}
+{% block body %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success" role="alert">
+  {{ message }} 
+</div>
+{% endfor %}
+{% endif %}
+
+  {% if status %}
+    <div class="container my-5" style="text-align:center;" >
+    <i class="fa fa-check-circle" aria-hidden="true" style="font-size: 180px; color:green;"></i>
+    <h2>Thanks your payment was successfull</h2> 
+  {% else %}
+  <h2>Thanks your payment was faild</h2> 
+  {% endif %}
+</div>
+{% endblock %}
